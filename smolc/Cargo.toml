@@ -1,0 +1,16 @@
+[package]
+name = "smolc"
+version = "0.0.1"
+edition = "2024"
+
+[lib]
+name = "smolc"
+path = "src/lib.rs"
+
+[[bin]]
+name = "smolc"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.6.1", features = ["derive"] }
+egg = "0.11.0"
