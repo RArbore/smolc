@@ -1,0 +1,136 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "t",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "c",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "c"
+        },
+        {
+          "args": [
+            "c",
+            "n"
+          ],
+          "dest": "cond_c",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_c"
+          ],
+          "funcs": [],
+          "labels": [
+            "c_le",
+            "c_gt"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "c_gt"
+        },
+        {
+          "args": [
+            "t"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "c_le"
+        },
+        {
+          "args": [
+            "t",
+            "c"
+          ],
+          "dest": "t",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "c",
+            "one"
+          ],
+          "dest": "c",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "c"
+          ],
+          "op": "jmp"
+        }
+      ],
+      "name": "tri",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "tri"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "tmp"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

@@ -1,6 +1,7 @@
 use std::fs::File;
 use std::path::PathBuf;
 
+use bril_rs::load_program_from_read;
 use clap::Parser;
 
 #[derive(Debug, Parser)]
@@ -10,5 +11,7 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    let _file = File::open(args.file).unwrap();
+    let file = File::open(&args.file).unwrap();
+    let bril = load_program_from_read(file);
+    println!("{:?}", bril);
 }

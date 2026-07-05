@@ -1,0 +1,1137 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "target",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [],
+          "dest": "arr",
+          "funcs": [
+            "initArr"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "arr",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v45",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v46",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "args": [
+            "v45",
+            "v46",
+            "target"
+          ],
+          "dest": "result",
+          "funcs": [
+            "twoSum"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "result"
+          ],
+          "dest": "result",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v47",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v47"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "dest": "v48",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "result"
+          ],
+          "dest": "v49",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v50",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "v49",
+            "v50"
+          ],
+          "dest": "v51",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v51"
+          ],
+          "dest": "v52",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v52"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "dest": "v53",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "result"
+          ],
+          "dest": "v54",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v55",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v54",
+            "v55"
+          ],
+          "dest": "v56",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v56"
+          ],
+          "dest": "v57",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v57"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "dest": "v58",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "result"
+          ],
+          "dest": "v59",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v59"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "dest": "v60",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [],
+      "instrs": [
+        {
+          "dest": "v0",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "args": [
+            "v0"
+          ],
+          "dest": "v1",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v1"
+          ],
+          "dest": "arr",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v2",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v3",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "v2",
+            "v3"
+          ],
+          "dest": "v4",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v5",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "v4",
+            "v5"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v6",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v7",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v8",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v7",
+            "v8"
+          ],
+          "dest": "v9",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v10",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "args": [
+            "v9",
+            "v10"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v11",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v12",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v13",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "v12",
+            "v13"
+          ],
+          "dest": "v14",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v15",
+          "op": "const",
+          "type": "int",
+          "value": 11
+        },
+        {
+          "args": [
+            "v14",
+            "v15"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v16",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v17",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v18",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "args": [
+            "v17",
+            "v18"
+          ],
+          "dest": "v19",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v20",
+          "op": "const",
+          "type": "int",
+          "value": 15
+        },
+        {
+          "args": [
+            "v19",
+            "v20"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v21",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "v22",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v22"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "initArr",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "nums",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "target",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "v0",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "v0"
+          ],
+          "dest": "v1",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v1"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v3",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "v3"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "label": "for.cond.2"
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v4",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "v5",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v4",
+            "v5"
+          ],
+          "dest": "v6",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "v6"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body.2",
+            "for.end.2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body.2"
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v8",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v9",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v8",
+            "v9"
+          ],
+          "dest": "v10",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v10"
+          ],
+          "dest": "j",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "label": "for.cond.7"
+        },
+        {
+          "args": [
+            "j"
+          ],
+          "dest": "v11",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "v12",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v11",
+            "v12"
+          ],
+          "dest": "v13",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "v13"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body.7",
+            "for.end.7"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body.7"
+        },
+        {
+          "args": [
+            "nums"
+          ],
+          "dest": "v14",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v15",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v14",
+            "v15"
+          ],
+          "dest": "v16",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v16"
+          ],
+          "dest": "v17",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "nums"
+          ],
+          "dest": "v18",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "j"
+          ],
+          "dest": "v19",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v18",
+            "v19"
+          ],
+          "dest": "v20",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v20"
+          ],
+          "dest": "v21",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v17",
+            "v21"
+          ],
+          "dest": "v22",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v22"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "dest": "v24",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "target"
+          ],
+          "dest": "v25",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v24",
+            "v25"
+          ],
+          "dest": "v26",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "v26"
+          ],
+          "funcs": [],
+          "labels": [
+            "then.23",
+            "else.23"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "then.23"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "dest": "v27",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v28",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "v27",
+            "v28"
+          ],
+          "dest": "v29",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v30",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v29",
+            "v30"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v31",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "dest": "v32",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "v33",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v32",
+            "v33"
+          ],
+          "dest": "v34",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "j"
+          ],
+          "dest": "v35",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v34",
+            "v35"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v36",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "dest": "v37",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v37"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endif.23"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "else.23"
+        },
+        {
+          "label": "endif.23"
+        },
+        {
+          "args": [
+            "j"
+          ],
+          "dest": "v38",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v39",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v38",
+            "v39"
+          ],
+          "dest": "v40",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v40"
+          ],
+          "dest": "j",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond.7"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end.7"
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v41",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v42",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v41",
+            "v42"
+          ],
+          "dest": "v43",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v43"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond.2"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end.2"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "dest": "v44",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v44"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "twoSum",
+      "type": {
+        "ptr": "int"
+      }
+    }
+  ],
+  "imports": []
+}

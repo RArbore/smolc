@@ -1,0 +1,2032 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "seed",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "id",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "rng",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "rng",
+            "seed"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "n",
+            "n"
+          ],
+          "dest": "msize",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "msize",
+            "rng"
+          ],
+          "dest": "arr",
+          "funcs": [
+            "rand_array"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "msize",
+            "arr"
+          ],
+          "funcs": [
+            "print_array"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "id"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "msize"
+          ],
+          "dest": "dest",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "msize",
+            "n",
+            "arr",
+            "dest"
+          ],
+          "funcs": [
+            "next_board"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "msize",
+            "dest"
+          ],
+          "funcs": [
+            "print_array"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "rng"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "dest"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "msize",
+          "type": "int"
+        },
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "board",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "dest",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "compare"
+        },
+        {
+          "args": [
+            "i",
+            "msize"
+          ],
+          "dest": "exit",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "exit"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "continue"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "continue"
+        },
+        {
+          "args": [
+            "board",
+            "i"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "msize",
+            "n",
+            "i",
+            "board"
+          ],
+          "dest": "neighbors",
+          "funcs": [
+            "alive"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "cval",
+            "neighbors"
+          ],
+          "dest": "nval",
+          "funcs": [
+            "next_cell"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "dest",
+            "i"
+          ],
+          "dest": "nptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "nptr",
+            "nval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "compare"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        }
+      ],
+      "name": "next_board",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "x",
+          "type": "int"
+        },
+        {
+          "name": "neighbors",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "args": [
+            "x",
+            "one"
+          ],
+          "dest": "x_alive",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "x_alive"
+          ],
+          "funcs": [],
+          "labels": [
+            "alive",
+            "dead"
+          ],
+          "op": "br"
+        },
+        {
+          "dest": "res",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "alive"
+        },
+        {
+          "args": [
+            "neighbors",
+            "two"
+          ],
+          "dest": "dies",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "dies"
+          ],
+          "funcs": [],
+          "labels": [
+            "should_die",
+            "alive1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "alive1"
+        },
+        {
+          "args": [
+            "neighbors",
+            "four"
+          ],
+          "dest": "lives",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lives"
+          ],
+          "funcs": [],
+          "labels": [
+            "should_live",
+            "should_die"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "dead"
+        },
+        {
+          "args": [
+            "neighbors",
+            "three"
+          ],
+          "dest": "lives",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lives"
+          ],
+          "funcs": [],
+          "labels": [
+            "should_live",
+            "should_die"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "should_live"
+        },
+        {
+          "dest": "res",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "exit"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "should_die"
+        },
+        {
+          "dest": "res",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "exit"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "next_cell",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "msize",
+          "type": "int"
+        },
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "board",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "id",
+          "op": "const",
+          "type": "int",
+          "value": 223
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "comparison"
+        },
+        {
+          "args": [
+            "i",
+            "msize"
+          ],
+          "dest": "exit",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "exit"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "body"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body"
+        },
+        {
+          "args": [
+            "msize",
+            "n",
+            "i",
+            "board"
+          ],
+          "dest": "alive",
+          "funcs": [
+            "alive"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "id",
+            "i",
+            "alive"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "comparison"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        }
+      ],
+      "name": "test_neighbors",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "msize",
+          "type": "int"
+        },
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "i",
+          "type": "int"
+        },
+        {
+          "name": "board",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "id",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "sum",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "skip",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "skip"
+          ],
+          "funcs": [],
+          "labels": [
+            "d",
+            "a"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "a"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pos",
+            "n"
+          ],
+          "dest": "modulo",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "zero"
+          ],
+          "dest": "lw",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lw"
+          ],
+          "funcs": [],
+          "labels": [
+            "a.bis",
+            "b"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "a.bis"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pos",
+            "n"
+          ],
+          "dest": "modulo",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "one"
+          ],
+          "dest": "modulo",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "n"
+          ],
+          "dest": "rw",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "rw"
+          ],
+          "funcs": [],
+          "labels": [
+            "d",
+            "c"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "b"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pos",
+            "one"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "a.bis"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "c"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pos",
+            "one"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "d"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "d"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "modulo",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "zero"
+          ],
+          "dest": "lw",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lw"
+          ],
+          "funcs": [],
+          "labels": [
+            "d.bis",
+            "e"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "d.bis"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "modulo",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "one"
+          ],
+          "dest": "modulo",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "n"
+          ],
+          "dest": "rw",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "rw"
+          ],
+          "funcs": [],
+          "labels": [
+            "g",
+            "f"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "e"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "d.bis"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "f"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "g"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "g"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "next_pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next_pos",
+            "msize"
+          ],
+          "dest": "exit",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "exit"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "g.bis"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "g.bis"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "modulo",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "zero"
+          ],
+          "dest": "lw",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lw"
+          ],
+          "funcs": [],
+          "labels": [
+            "h",
+            "g.bis2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "g.bis2"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pos",
+            "one"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "h"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "h"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "modulo",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "one"
+          ],
+          "dest": "modulo",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "modulo",
+            "n"
+          ],
+          "dest": "rw",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "rw"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "i"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "i"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pos",
+            "one"
+          ],
+          "dest": "pos",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "loc",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "args": [
+            "board",
+            "pos"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "cval",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "cval"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "exit"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "alive",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "seq",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "max",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "int",
+          "value": 1588635695
+        },
+        {
+          "dest": "c",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "m",
+          "op": "const",
+          "type": "int",
+          "value": 4294967291
+        },
+        {
+          "args": [
+            "seq"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "x"
+          ],
+          "dest": "ax",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ax",
+            "c"
+          ],
+          "dest": "axpc",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "seq",
+            "next"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "next",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rand",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "rng",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "arr",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "label": "compare"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "done",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "done"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "continue"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "continue"
+        },
+        {
+          "args": [
+            "rng",
+            "two"
+          ],
+          "dest": "r",
+          "funcs": [
+            "rand"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr",
+            "r"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "compare"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rand_array",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "n",
+            "one"
+          ],
+          "dest": "last",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "id",
+          "op": "const",
+          "type": "int",
+          "value": 13
+        },
+        {
+          "label": "compare"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "exit",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "exit"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "continue"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "continue"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "id",
+            "i",
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "compare"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        }
+      ],
+      "name": "print_array",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "int"
+        },
+        {
+          "name": "b",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "a",
+            "b"
+          ],
+          "dest": "quotient",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "quotient",
+            "b"
+          ],
+          "dest": "whole",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "whole"
+          ],
+          "dest": "remainder",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "remainder",
+            "zero"
+          ],
+          "dest": "exit",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "exit"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "adjust"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "adjust"
+        },
+        {
+          "args": [
+            "remainder",
+            "b"
+          ],
+          "dest": "remainder",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "remainder"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "mod",
+      "type": "int"
+    }
+  ],
+  "imports": []
+}

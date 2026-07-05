@@ -1,0 +1,1357 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "i",
+          "type": "int"
+        },
+        {
+          "name": "j",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "i_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr",
+            "j"
+          ],
+          "dest": "j_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "i_ptr"
+          ],
+          "dest": "i_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "j_ptr"
+          ],
+          "dest": "j_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "j_ptr",
+            "i_value"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i_ptr",
+            "j_value"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        }
+      ],
+      "name": "swap",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "i",
+          "type": "int"
+        },
+        {
+          "name": "j",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "i",
+            "j"
+          ],
+          "dest": "twice_mid",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "twice_mid",
+            "two"
+          ],
+          "dest": "mid",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "i_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr",
+            "mid"
+          ],
+          "dest": "mid_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr",
+            "j"
+          ],
+          "dest": "j_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "i_ptr"
+          ],
+          "dest": "i_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "mid_ptr"
+          ],
+          "dest": "mid_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "j_ptr"
+          ],
+          "dest": "j_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "mid_value",
+            "j_value"
+          ],
+          "dest": "should_swap_mid_j",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "should_swap_mid_j"
+          ],
+          "funcs": [],
+          "labels": [
+            "swap_mid_j",
+            "no_swap_mid_j"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "swap_mid_j"
+        },
+        {
+          "args": [
+            "arr",
+            "mid",
+            "j"
+          ],
+          "funcs": [
+            "swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "label": "no_swap_mid_j"
+        },
+        {
+          "args": [
+            "mid_value",
+            "i_value"
+          ],
+          "dest": "should_swap_mid_i",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "should_swap_mid_i"
+          ],
+          "funcs": [],
+          "labels": [
+            "swap_mid_i",
+            "no_swap_mid_i"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "swap_mid_i"
+        },
+        {
+          "args": [
+            "arr",
+            "mid",
+            "i"
+          ],
+          "funcs": [
+            "swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "no_swap_mid_i"
+        },
+        {
+          "args": [
+            "i_value",
+            "j_value"
+          ],
+          "dest": "should_swap_i_j",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "should_swap_i_j"
+          ],
+          "funcs": [],
+          "labels": [
+            "swap_i_j",
+            "no_swap_i_j"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "swap_i_j"
+        },
+        {
+          "args": [
+            "arr",
+            "i",
+            "j"
+          ],
+          "funcs": [
+            "swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "label": "no_swap_i_j"
+        }
+      ],
+      "name": "median_of_three",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "h",
+          "type": "int"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "arr",
+            "h",
+            "k"
+          ],
+          "funcs": [
+            "median_of_three"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "arr",
+            "h"
+          ],
+          "dest": "pivot_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "pivot_ptr"
+          ],
+          "dest": "pivot",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "h",
+            "one"
+          ],
+          "dest": "t",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "k"
+          ],
+          "dest": "j",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "arr",
+            "t"
+          ],
+          "dest": "curr_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "label": "while.header"
+        },
+        {
+          "args": [
+            "t",
+            "j"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "while.body",
+            "while.exit"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "while.body"
+        },
+        {
+          "args": [
+            "curr_ptr"
+          ],
+          "dest": "curr_elt",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr_elt",
+            "pivot"
+          ],
+          "dest": "had_inversion",
+          "funcs": [],
+          "labels": [],
+          "op": "gt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "had_inversion"
+          ],
+          "funcs": [],
+          "labels": [
+            "while.body.inversion",
+            "while.body.no_inversion"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "while.body.inversion"
+        },
+        {
+          "args": [
+            "arr",
+            "t",
+            "j"
+          ],
+          "funcs": [
+            "swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "j",
+            "one"
+          ],
+          "dest": "j",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "while.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "while.body.no_inversion"
+        },
+        {
+          "args": [
+            "t",
+            "one"
+          ],
+          "dest": "t",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr_ptr",
+            "one"
+          ],
+          "dest": "curr_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "while.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "while.exit"
+        },
+        {
+          "args": [
+            "arr",
+            "h",
+            "j"
+          ],
+          "funcs": [
+            "swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "j"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "partition",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "h",
+          "type": "int"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "h",
+            "k"
+          ],
+          "dest": "done",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "done"
+          ],
+          "funcs": [],
+          "labels": [
+            "base",
+            "recurse"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "recurse"
+        },
+        {
+          "args": [
+            "arr",
+            "h",
+            "k"
+          ],
+          "dest": "j",
+          "funcs": [
+            "partition"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "j",
+            "one"
+          ],
+          "dest": "left_end",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "j",
+            "one"
+          ],
+          "dest": "right_begin",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "arr",
+            "h",
+            "left_end"
+          ],
+          "funcs": [
+            "qsort"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "arr",
+            "right_begin",
+            "k"
+          ],
+          "funcs": [
+            "qsort"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "label": "base"
+        }
+      ],
+      "name": "qsort",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "len",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "iter",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "dest": "curr_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "loop.header"
+        },
+        {
+          "args": [
+            "iter",
+            "len"
+          ],
+          "dest": "done",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "done"
+          ],
+          "funcs": [],
+          "labels": [
+            "loop.exit",
+            "loop.body"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "loop.body"
+        },
+        {
+          "args": [
+            "iter",
+            "one"
+          ],
+          "dest": "iter",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr_ptr"
+          ],
+          "dest": "curr_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr_ptr",
+            "one"
+          ],
+          "dest": "curr_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr_ptr"
+          ],
+          "dest": "next_value",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr_value",
+            "next_value"
+          ],
+          "dest": "has_inversion",
+          "funcs": [],
+          "labels": [],
+          "op": "gt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "has_inversion"
+          ],
+          "funcs": [],
+          "labels": [
+            "inversion",
+            "no_inversion"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "inversion"
+        },
+        {
+          "dest": "fls",
+          "op": "const",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "args": [
+            "fls"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "no_inversion"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "loop.exit"
+        },
+        {
+          "dest": "tru",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "tru"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "is_nondecreasing",
+      "type": "bool"
+    },
+    {
+      "args": [
+        {
+          "name": "seq",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "max",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "int",
+          "value": 25214903917
+        },
+        {
+          "dest": "c",
+          "op": "const",
+          "type": "int",
+          "value": 11
+        },
+        {
+          "dest": "m",
+          "op": "const",
+          "type": "int",
+          "value": 281474976710656
+        },
+        {
+          "args": [
+            "seq"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "x"
+          ],
+          "dest": "ax",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ax",
+            "c"
+          ],
+          "dest": "axpc",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "next"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "seq",
+            "next"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "next",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next",
+            "val"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rand",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "rng",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "arr",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "max",
+          "op": "const",
+          "type": "int",
+          "value": 1000
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "body",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body"
+        },
+        {
+          "args": [
+            "rng",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [
+            "rand"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "label": "loop_end"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "randarray",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "narrays",
+          "type": "int"
+        },
+        {
+          "name": "len",
+          "type": "int"
+        },
+        {
+          "name": "seed",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "rng",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "rng",
+            "seed"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "len",
+            "one"
+          ],
+          "dest": "last_index",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "label": "loop.header"
+        },
+        {
+          "args": [
+            "narrays",
+            "zero"
+          ],
+          "dest": "done",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "done"
+          ],
+          "funcs": [],
+          "labels": [
+            "loop.exit",
+            "loop.body"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "loop.body"
+        },
+        {
+          "args": [
+            "len",
+            "rng"
+          ],
+          "dest": "arr",
+          "funcs": [
+            "randarray"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "arr",
+            "zero",
+            "last_index"
+          ],
+          "funcs": [
+            "qsort"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "arr",
+            "len"
+          ],
+          "dest": "success",
+          "funcs": [
+            "is_nondecreasing"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "success"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "narrays",
+            "one"
+          ],
+          "dest": "narrays",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "loop.exit"
+        },
+        {
+          "args": [
+            "rng"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

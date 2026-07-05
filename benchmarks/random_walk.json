@@ -1,0 +1,837 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "state",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "max",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "int",
+          "value": 1588635695
+        },
+        {
+          "dest": "c",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "m",
+          "op": "const",
+          "type": "int",
+          "value": 4294967291
+        },
+        {
+          "args": [
+            "state"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "x"
+          ],
+          "dest": "ax",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ax",
+            "c"
+          ],
+          "dest": "axpc",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "next"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "state",
+            "next"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "next",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next",
+            "val"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "minus",
+          "op": "const",
+          "type": "int",
+          "value": -1
+        },
+        {
+          "args": [
+            "val",
+            "zero"
+          ],
+          "dest": "neg",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "neg"
+          ],
+          "funcs": [],
+          "labels": [
+            "negate",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "negate"
+        },
+        {
+          "args": [
+            "val",
+            "minus"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rand",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "loc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "rand_state",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "two",
+            "n"
+          ],
+          "dest": "n2",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "rand_state",
+            "n2"
+          ],
+          "dest": "rnd",
+          "funcs": [
+            "rand"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "i",
+            "two"
+          ],
+          "dest": "i2",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i2",
+            "one"
+          ],
+          "dest": "i2p1",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "loc",
+            "i"
+          ],
+          "dest": "loc_i",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "i2",
+            "rnd"
+          ],
+          "dest": "rnd_eq_i2",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "rnd_eq_i2"
+          ],
+          "funcs": [],
+          "labels": [
+            "then_i2",
+            "else_i2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "then_i2"
+        },
+        {
+          "args": [
+            "loc_i"
+          ],
+          "dest": "coord",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "coord",
+            "one"
+          ],
+          "dest": "coord",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "loc_i",
+            "coord"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else_i2"
+        },
+        {
+          "args": [
+            "i2p1",
+            "rnd"
+          ],
+          "dest": "rnd_eq_i2p1",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "rnd_eq_i2p1"
+          ],
+          "funcs": [],
+          "labels": [
+            "then_i2p1",
+            "else_i2p1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "then_i2p1"
+        },
+        {
+          "args": [
+            "loc_i"
+          ],
+          "dest": "coord",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "coord",
+            "one"
+          ],
+          "dest": "coord",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "loc_i",
+            "coord"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else_i2p1"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        }
+      ],
+      "name": "step",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "seed",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "limit",
+          "op": "const",
+          "type": "int",
+          "value": 100000
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "rand_state",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "fortyfive",
+          "op": "const",
+          "type": "int",
+          "value": 45
+        },
+        {
+          "args": [
+            "fortyfive"
+          ],
+          "dest": "dash",
+          "funcs": [],
+          "labels": [],
+          "op": "int2char",
+          "type": "char"
+        },
+        {
+          "args": [
+            "rand_state",
+            "seed"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "cont_init"
+        },
+        {
+          "args": [
+            "loc",
+            "i"
+          ],
+          "dest": "loc_i",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc_i",
+            "zero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "i_eq_n",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "i_eq_n"
+          ],
+          "funcs": [],
+          "labels": [
+            "end_init",
+            "cont_init"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "end_init"
+        },
+        {
+          "args": [
+            "dash"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "dest": "steps",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "n",
+            "loc",
+            "rand_state"
+          ],
+          "funcs": [
+            "step"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "steps",
+            "one"
+          ],
+          "dest": "steps",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "back_home",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "label": "cont"
+        },
+        {
+          "args": [
+            "loc",
+            "i"
+          ],
+          "dest": "loc_i",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc_i"
+          ],
+          "dest": "coord",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "coord"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "coord",
+            "zero"
+          ],
+          "dest": "coord_eq_0",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "coord_eq_0",
+            "back_home"
+          ],
+          "dest": "back_home",
+          "funcs": [],
+          "labels": [],
+          "op": "and",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "i_eq_n",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "i_eq_n"
+          ],
+          "funcs": [],
+          "labels": [
+            "end",
+            "cont"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "end"
+        },
+        {
+          "args": [
+            "steps",
+            "limit"
+          ],
+          "dest": "steps_eq_limit",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "back_home",
+            "steps_eq_limit"
+          ],
+          "dest": "stop",
+          "funcs": [],
+          "labels": [],
+          "op": "or",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "stop"
+          ],
+          "funcs": [],
+          "labels": [
+            "home",
+            "print_dash"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "print_dash"
+        },
+        {
+          "args": [
+            "dash"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "home"
+        },
+        {
+          "args": [
+            "rand_state"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "loc"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

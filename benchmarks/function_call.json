@@ -1,0 +1,194 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "starting_m",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "starting_m"
+          ],
+          "dest": "m",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "m",
+            "zero"
+          ],
+          "dest": "cond_m",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_m"
+          ],
+          "funcs": [],
+          "labels": [
+            "end",
+            "m_nonzero"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "m_nonzero"
+        },
+        {
+          "args": [
+            "m",
+            "one"
+          ],
+          "dest": "m",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "m"
+          ],
+          "funcs": [
+            "main"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "m",
+            "zero"
+          ],
+          "dest": "cond_m",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_m"
+          ],
+          "funcs": [],
+          "labels": [
+            "end",
+            "m_nonzero2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "m_nonzero2"
+        },
+        {
+          "args": [
+            "m",
+            "one"
+          ],
+          "dest": "m",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "m"
+          ],
+          "funcs": [
+            "main"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "m",
+            "zero"
+          ],
+          "dest": "cond_m",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_m"
+          ],
+          "funcs": [],
+          "labels": [
+            "end",
+            "m_nonzero3"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "m_nonzero3"
+        },
+        {
+          "args": [
+            "m",
+            "one"
+          ],
+          "dest": "m",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "m"
+          ],
+          "funcs": [
+            "main"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "label": "end"
+        },
+        {
+          "args": [
+            "starting_m"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

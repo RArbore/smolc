@@ -1,0 +1,1175 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "img_size",
+          "type": "int"
+        },
+        {
+          "name": "kernel_size",
+          "type": "int"
+        },
+        {
+          "name": "seed",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "img_size",
+            "img_size"
+          ],
+          "dest": "img_size_sq",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "kernel_size",
+            "kernel_size"
+          ],
+          "dest": "kernel_size_sq",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "img_size",
+            "kernel_size"
+          ],
+          "dest": "output_rows",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "output_rows",
+            "one"
+          ],
+          "dest": "output_size",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "output_size",
+            "output_size"
+          ],
+          "dest": "output_size_sq",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "rng",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "rng",
+            "seed"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "img_size_sq",
+            "rng"
+          ],
+          "dest": "img",
+          "funcs": [
+            "randarray"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "kernel_size_sq",
+            "rng"
+          ],
+          "dest": "kernel",
+          "funcs": [
+            "randarray"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "img",
+            "img_size",
+            "kernel",
+            "kernel_size",
+            "output_size_sq"
+          ],
+          "dest": "output",
+          "funcs": [
+            "convolve"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "img_size_sq",
+            "img"
+          ],
+          "funcs": [
+            "printarray"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "kernel_size_sq",
+            "kernel"
+          ],
+          "funcs": [
+            "printarray"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "output_size_sq",
+            "output"
+          ],
+          "funcs": [
+            "printarray"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "img"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "kernel"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "output"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "rng"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "img",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "img_size",
+          "type": "int"
+        },
+        {
+          "name": "kernel",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "kernel_size",
+          "type": "int"
+        },
+        {
+          "name": "output_size_sq",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "cur_out_idx",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "int1",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "int2",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "output_size_sq"
+          ],
+          "dest": "output",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "img_size",
+            "kernel_size"
+          ],
+          "dest": "strides",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "kernel_size",
+            "int2"
+          ],
+          "dest": "start_row",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "start_row"
+          ],
+          "dest": "img_row",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "start_row",
+            "strides"
+          ],
+          "dest": "img_end_row",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "label": "loop1"
+        },
+        {
+          "args": [
+            "img_row",
+            "img_end_row"
+          ],
+          "dest": "b1",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "b1"
+          ],
+          "funcs": [],
+          "labels": [
+            "body1",
+            "done1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body1"
+        },
+        {
+          "args": [
+            "start_row"
+          ],
+          "dest": "img_col",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "label": "loop2"
+        },
+        {
+          "args": [
+            "img_col",
+            "img_end_row"
+          ],
+          "dest": "b2",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "b2"
+          ],
+          "funcs": [],
+          "labels": [
+            "body2",
+            "done2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body2"
+        },
+        {
+          "dest": "sum",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "cur_ker_row",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "loop3"
+        },
+        {
+          "args": [
+            "cur_ker_row",
+            "kernel_size"
+          ],
+          "dest": "b3",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "b3"
+          ],
+          "funcs": [],
+          "labels": [
+            "body3",
+            "done3"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body3"
+        },
+        {
+          "dest": "cur_ker_col",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "loop4"
+        },
+        {
+          "args": [
+            "cur_ker_col",
+            "kernel_size"
+          ],
+          "dest": "b4",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "b4"
+          ],
+          "funcs": [],
+          "labels": [
+            "body4",
+            "done4"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body4"
+        },
+        {
+          "args": [
+            "img_row",
+            "cur_ker_row"
+          ],
+          "dest": "cur_img_r",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "cur_img_r",
+            "start_row"
+          ],
+          "dest": "cur_img_r",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "img_col",
+            "cur_ker_col"
+          ],
+          "dest": "cur_img_c",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "cur_img_c",
+            "start_row"
+          ],
+          "dest": "cur_img_c",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "cur_img_r",
+            "img_size"
+          ],
+          "dest": "past_rows",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "past_rows",
+            "cur_img_c"
+          ],
+          "dest": "cur_img_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "img",
+            "cur_img_idx"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc"
+          ],
+          "dest": "pixel",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "cur_ker_row",
+            "kernel_size"
+          ],
+          "dest": "past_rows",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "past_rows",
+            "cur_ker_col"
+          ],
+          "dest": "cur_ker_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "kernel",
+            "cur_ker_idx"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc"
+          ],
+          "dest": "cur_ker_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "pixel",
+            "cur_ker_val"
+          ],
+          "dest": "prod",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sum",
+            "prod"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "cur_ker_col",
+            "int1"
+          ],
+          "dest": "cur_ker_col",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop4"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done4"
+        },
+        {
+          "args": [
+            "cur_ker_row",
+            "int1"
+          ],
+          "dest": "cur_ker_row",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop3"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done3"
+        },
+        {
+          "args": [
+            "output",
+            "cur_out_idx"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "cur_out_idx",
+            "int1"
+          ],
+          "dest": "cur_out_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "img_col",
+            "int1"
+          ],
+          "dest": "img_col",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop2"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done2"
+        },
+        {
+          "args": [
+            "img_row",
+            "int1"
+          ],
+          "dest": "img_row",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop1"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done1"
+        },
+        {
+          "args": [
+            "output"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "convolve",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "seq",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "max",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "int",
+          "value": 25214903917
+        },
+        {
+          "dest": "c",
+          "op": "const",
+          "type": "int",
+          "value": 11
+        },
+        {
+          "dest": "m",
+          "op": "const",
+          "type": "int",
+          "value": 281474976710656
+        },
+        {
+          "args": [
+            "seq"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "x"
+          ],
+          "dest": "ax",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ax",
+            "c"
+          ],
+          "dest": "axpc",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next",
+            "m"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "axpc",
+            "next"
+          ],
+          "dest": "next",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "seq",
+            "next"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "next",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "next",
+            "val"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rand",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "rng",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "arr",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "max",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "body",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body"
+        },
+        {
+          "args": [
+            "rng",
+            "max"
+          ],
+          "dest": "val",
+          "funcs": [
+            "rand"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "label": "loop_end"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [
+            "arr"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "randarray",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "body",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "label": "loop_end"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "printarray",
+      "type": null
+    }
+  ],
+  "imports": []
+}

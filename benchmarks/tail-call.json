@@ -1,0 +1,84 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "depth",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "depth",
+            "zero"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "end",
+            "inc_depth"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "inc_depth"
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "depth",
+            "one"
+          ],
+          "dest": "new_depth",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "new_depth"
+          ],
+          "funcs": [
+            "main"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "label": "end"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

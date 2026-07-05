@@ -1,0 +1,1283 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n1",
+          "type": "int"
+        },
+        {
+          "name": "n2",
+          "type": "int"
+        },
+        {
+          "name": "n3",
+          "type": "int"
+        },
+        {
+          "name": "n4",
+          "type": "int"
+        },
+        {
+          "name": "n5",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "size",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "array",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "array",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "n1"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "array",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "n2"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "array",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "n3"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "array",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "n4"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "array",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc",
+            "n5"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "pack",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "array",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "body",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body"
+        },
+        {
+          "args": [
+            "array",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "loc"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "label": "loop_end"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "print_array",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "array",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "l",
+          "type": "int"
+        },
+        {
+          "name": "r",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v0",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "l"
+          ],
+          "dest": "v1",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v0",
+            "v1"
+          ],
+          "dest": "v2",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v2"
+          ],
+          "dest": "v3",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v3"
+          ],
+          "dest": "left",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v4",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "r"
+          ],
+          "dest": "v5",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v4",
+            "v5"
+          ],
+          "dest": "v6",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "v6"
+          ],
+          "dest": "v7",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v7"
+          ],
+          "dest": "right",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "right"
+          ],
+          "dest": "v9",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "left"
+          ],
+          "dest": "v10",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v9",
+            "v10"
+          ],
+          "dest": "v11",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "v11"
+          ],
+          "funcs": [],
+          "labels": [
+            "then.8",
+            "else.8"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "then.8"
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v12",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "l"
+          ],
+          "dest": "v13",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v12",
+            "v13"
+          ],
+          "dest": "v14",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "right"
+          ],
+          "dest": "v15",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v14",
+            "v15"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v16",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v17",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "r"
+          ],
+          "dest": "v18",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v17",
+            "v18"
+          ],
+          "dest": "v19",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "left"
+          ],
+          "dest": "v20",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v19",
+            "v20"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "dest": "v21",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endif.8"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "else.8"
+        },
+        {
+          "label": "endif.8"
+        }
+      ],
+      "name": "compare_and_swap",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "array",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "v0",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "v0"
+          ],
+          "dest": "zero",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v1",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "v1"
+          ],
+          "dest": "one",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v2",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "v2"
+          ],
+          "dest": "two",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v3",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "args": [
+            "v3"
+          ],
+          "dest": "three",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "dest": "v4",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "args": [
+            "v4"
+          ],
+          "dest": "four",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v5",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "dest": "v6",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "three"
+          ],
+          "dest": "v7",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v5",
+            "v6",
+            "v7"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v8",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v9",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "v10",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "four"
+          ],
+          "dest": "v11",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v9",
+            "v10",
+            "v11"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v12",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v13",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "dest": "v14",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "two"
+          ],
+          "dest": "v15",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v13",
+            "v14",
+            "v15"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v16",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v17",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "v18",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "three"
+          ],
+          "dest": "v19",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v17",
+            "v18",
+            "v19"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v20",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v21",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "dest": "v22",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "v23",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v21",
+            "v22",
+            "v23"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v24",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v25",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "two"
+          ],
+          "dest": "v26",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "four"
+          ],
+          "dest": "v27",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v25",
+            "v26",
+            "v27"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v28",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v29",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "v30",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "two"
+          ],
+          "dest": "v31",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v29",
+            "v30",
+            "v31"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v32",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v33",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "three"
+          ],
+          "dest": "v34",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "four"
+          ],
+          "dest": "v35",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v33",
+            "v34",
+            "v35"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v36",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "dest": "v37",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "two"
+          ],
+          "dest": "v38",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "three"
+          ],
+          "dest": "v39",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v37",
+            "v38",
+            "v39"
+          ],
+          "funcs": [
+            "compare_and_swap"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "v40",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        }
+      ],
+      "name": "sorting_network_five",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "n1",
+          "type": "int"
+        },
+        {
+          "name": "n2",
+          "type": "int"
+        },
+        {
+          "name": "n3",
+          "type": "int"
+        },
+        {
+          "name": "n4",
+          "type": "int"
+        },
+        {
+          "name": "n5",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "n1",
+            "n2",
+            "n3",
+            "n4",
+            "n5"
+          ],
+          "dest": "array",
+          "funcs": [
+            "pack"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "funcs": [
+            "sorting_network_five"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "dest": "size",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "args": [
+            "array",
+            "size"
+          ],
+          "funcs": [
+            "print_array"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "array"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

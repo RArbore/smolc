@@ -1,0 +1,321 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "out",
+          "op": "const",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "dest": "tmp0",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "label1"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "tmp1",
+          "funcs": [
+            "mod_ten"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "n",
+            "ten"
+          ],
+          "dest": "n",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "label": "label5"
+        },
+        {
+          "args": [
+            "tmp1",
+            "tmp0"
+          ],
+          "dest": "drop",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "tmp1"
+          ],
+          "dest": "tmp0",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "drop"
+          ],
+          "funcs": [],
+          "labels": [
+            "label2",
+            "label5b"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "label5b"
+        },
+        {
+          "args": [
+            "n",
+            "zero"
+          ],
+          "dest": "more",
+          "funcs": [],
+          "labels": [],
+          "op": "gt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "more"
+          ],
+          "funcs": [],
+          "labels": [
+            "label1",
+            "label3"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "label2"
+        },
+        {
+          "dest": "out",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "label": "label7"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "tmp1",
+          "funcs": [
+            "mod_ten"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "n",
+            "ten"
+          ],
+          "dest": "n",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "label": "label6"
+        },
+        {
+          "args": [
+            "tmp1",
+            "tmp0"
+          ],
+          "dest": "bad",
+          "funcs": [],
+          "labels": [],
+          "op": "gt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "bad"
+          ],
+          "funcs": [],
+          "labels": [
+            "labelfail",
+            "label6b"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "label6b"
+        },
+        {
+          "args": [
+            "tmp1"
+          ],
+          "dest": "tmp0",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "n",
+            "zero"
+          ],
+          "dest": "more2",
+          "funcs": [],
+          "labels": [],
+          "op": "gt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "more2"
+          ],
+          "funcs": [],
+          "labels": [
+            "label7",
+            "label4"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "labelfail"
+        },
+        {
+          "dest": "out",
+          "op": "const",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "args": [
+            "out"
+          ],
+          "funcs": [],
+          "labels": [
+            "label4",
+            "label4"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "label3"
+        },
+        {
+          "dest": "out",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "label": "label4"
+        },
+        {
+          "args": [
+            "out"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "args": [
+            "n",
+            "ten"
+          ],
+          "dest": "v1",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v1",
+            "ten"
+          ],
+          "dest": "v2",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "n",
+            "v2"
+          ],
+          "dest": "v3",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v3"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "mod_ten",
+      "type": "int"
+    }
+  ],
+  "imports": []
+}

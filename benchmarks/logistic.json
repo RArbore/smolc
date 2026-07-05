@@ -1,0 +1,167 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "r",
+          "type": "float"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "one",
+            "x"
+          ],
+          "dest": "tmp",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "tmp",
+            "x"
+          ],
+          "dest": "tmp",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "r",
+            "tmp"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "x"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "n",
+            "zero"
+          ],
+          "dest": "b",
+          "funcs": [],
+          "labels": [],
+          "op": "feq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "b"
+          ],
+          "funcs": [],
+          "labels": [
+            "return",
+            "cont"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "cont"
+        },
+        {
+          "args": [
+            "n",
+            "one"
+          ],
+          "dest": "n1",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "r",
+            "x",
+            "n1"
+          ],
+          "funcs": [
+            "logistic_map"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "label": "return"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "logistic_map",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "r",
+          "type": "float"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "r",
+            "x",
+            "n"
+          ],
+          "funcs": [
+            "logistic_map"
+          ],
+          "labels": [],
+          "op": "call"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

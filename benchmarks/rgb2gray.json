@@ -1,0 +1,153 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "r",
+          "type": "float"
+        },
+        {
+          "name": "g",
+          "type": "float"
+        },
+        {
+          "name": "b",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "vr",
+          "op": "const",
+          "type": "float",
+          "value": 0.299
+        },
+        {
+          "dest": "vg",
+          "op": "const",
+          "type": "float",
+          "value": 0.587
+        },
+        {
+          "dest": "vb",
+          "op": "const",
+          "type": "float",
+          "value": 0.114
+        },
+        {
+          "args": [
+            "vr",
+            "r"
+          ],
+          "dest": "cr",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "vg",
+            "g"
+          ],
+          "dest": "cg",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "vb",
+            "b"
+          ],
+          "dest": "cb",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "cr",
+            "cg"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "res",
+            "cb"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rgb2gray",
+      "type": "float"
+    },
+    {
+      "args": [],
+      "instrs": [
+        {
+          "dest": "r",
+          "op": "const",
+          "type": "float",
+          "value": 120
+        },
+        {
+          "dest": "g",
+          "op": "const",
+          "type": "float",
+          "value": 200
+        },
+        {
+          "dest": "b",
+          "op": "const",
+          "type": "float",
+          "value": 150
+        },
+        {
+          "args": [
+            "r",
+            "g",
+            "b"
+          ],
+          "dest": "gray",
+          "funcs": [
+            "rgb2gray"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "gray"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

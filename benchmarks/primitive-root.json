@@ -1,0 +1,1419 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "int"
+        },
+        {
+          "name": "b",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "a",
+            "b"
+          ],
+          "dest": "quotient",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "b",
+            "quotient"
+          ],
+          "dest": "guess",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "guess"
+          ],
+          "dest": "rem",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "rem"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "rem",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "m",
+          "type": "int"
+        },
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "n",
+            "m"
+          ],
+          "dest": "quotient",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "m",
+            "quotient"
+          ],
+          "dest": "guess",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "n",
+            "guess"
+          ],
+          "dest": "rem",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "rem",
+            "zero"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "divides",
+      "type": "bool"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "ns",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "l",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "l",
+            "one"
+          ],
+          "dest": "new",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "new"
+          ],
+          "dest": "out",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "out",
+            "n"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ns"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "out",
+            "one"
+          ],
+          "dest": "curr2",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "label": "repeat"
+        },
+        {
+          "args": [
+            "i",
+            "l"
+          ],
+          "dest": "stop",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "stop"
+          ],
+          "funcs": [],
+          "labels": [
+            "next",
+            "exit"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "next"
+        },
+        {
+          "args": [
+            "curr"
+          ],
+          "dest": "tmp",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr2",
+            "tmp"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "curr",
+            "one"
+          ],
+          "dest": "curr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "curr2",
+            "one"
+          ],
+          "dest": "curr2",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "repeat"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "ns"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "out"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "prepend",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "guess",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "inc",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "continue"
+        },
+        {
+          "args": [
+            "guess",
+            "guess"
+          ],
+          "dest": "square",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "square",
+            "n"
+          ],
+          "dest": "continue",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "guess",
+            "n"
+          ],
+          "dest": "works",
+          "funcs": [
+            "divides"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "works"
+          ],
+          "funcs": [],
+          "labels": [
+            "yay",
+            "inc"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "yay"
+        },
+        {
+          "args": [
+            "guess"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "inc"
+        },
+        {
+          "args": [
+            "guess",
+            "inc"
+          ],
+          "dest": "guess",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "continue"
+          ],
+          "funcs": [],
+          "labels": [
+            "continue",
+            "giveup"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "giveup"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "prime_factor",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        },
+        {
+          "name": "num_factors",
+          "type": {
+            "ptr": "int"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "count",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "count"
+          ],
+          "dest": "ans",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "ans",
+            "zero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "label": "continue"
+        },
+        {
+          "args": [
+            "n",
+            "one"
+          ],
+          "dest": "exit",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "exit"
+          ],
+          "funcs": [],
+          "labels": [
+            "exit",
+            "next"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "next"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "prime",
+          "funcs": [
+            "prime_factor"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "label": "repeat"
+        },
+        {
+          "args": [
+            "n",
+            "prime"
+          ],
+          "dest": "n",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "prime",
+            "n"
+          ],
+          "dest": "divides",
+          "funcs": [
+            "divides"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "divides"
+          ],
+          "funcs": [],
+          "labels": [
+            "repeat",
+            "divided"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "divided"
+        },
+        {
+          "args": [
+            "count",
+            "one"
+          ],
+          "dest": "tmp",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "prime",
+            "ans",
+            "count"
+          ],
+          "dest": "ans",
+          "funcs": [
+            "prepend"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "count",
+            "one"
+          ],
+          "dest": "count",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "continue"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "num_factors",
+            "count"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ans"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "prime_factors",
+      "type": {
+        "ptr": "int"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "int"
+        },
+        {
+          "name": "k",
+          "type": "int"
+        },
+        {
+          "name": "m",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "args": [
+            "a",
+            "m"
+          ],
+          "dest": "a",
+          "funcs": [
+            "rem"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "zero",
+            "k"
+          ],
+          "dest": "eq_zero",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "eq_zero"
+          ],
+          "funcs": [],
+          "labels": [
+            "exp_zero",
+            "not_zero"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "exp_zero"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "not_zero"
+        },
+        {
+          "args": [
+            "one",
+            "k"
+          ],
+          "dest": "eq_one",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "eq_one"
+          ],
+          "funcs": [],
+          "labels": [
+            "exp_one",
+            "not_one"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "exp_one"
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "not_one"
+        },
+        {
+          "args": [
+            "k",
+            "two"
+          ],
+          "dest": "rem_two",
+          "funcs": [
+            "rem"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "rem_two",
+            "one"
+          ],
+          "dest": "post_mul",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "k",
+            "two"
+          ],
+          "dest": "half_exp",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "half_exp",
+            "m"
+          ],
+          "dest": "sqrt",
+          "funcs": [
+            "modexp"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "sqrt",
+            "sqrt"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "res",
+            "m"
+          ],
+          "dest": "res",
+          "funcs": [
+            "rem"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "post_mul"
+          ],
+          "funcs": [],
+          "labels": [
+            "post_multiply",
+            "no_post"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "post_multiply"
+        },
+        {
+          "args": [
+            "res",
+            "a"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "res",
+            "m"
+          ],
+          "dest": "res",
+          "funcs": [
+            "rem"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "label": "no_post"
+        },
+        {
+          "label": "exit"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "modexp",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "p",
+          "type": "int"
+        },
+        {
+          "name": "phi_p",
+          "type": "int"
+        },
+        {
+          "name": "factors",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "guess",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "count",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "factors"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "label": "check_power"
+        },
+        {
+          "args": [
+            "ptr"
+          ],
+          "dest": "factor",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "factor",
+            "zero"
+          ],
+          "dest": "stop",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "stop"
+          ],
+          "funcs": [],
+          "labels": [
+            "ret_true",
+            "next1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "next1"
+        },
+        {
+          "args": [
+            "phi_p",
+            "factor"
+          ],
+          "dest": "power",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "guess",
+            "power",
+            "p"
+          ],
+          "dest": "exp",
+          "funcs": [
+            "modexp"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "exp",
+            "one"
+          ],
+          "dest": "is_one",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "is_one"
+          ],
+          "funcs": [],
+          "labels": [
+            "ret_false",
+            "next2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "next2"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "count",
+            "one"
+          ],
+          "dest": "count",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "check_power"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "ret_true"
+        },
+        {
+          "dest": "t",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "t"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "ret_false"
+        },
+        {
+          "dest": "t",
+          "op": "const",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "args": [
+            "t"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "check_ord",
+      "type": "bool"
+    },
+    {
+      "args": [
+        {
+          "name": "p",
+          "type": "int"
+        },
+        {
+          "name": "phi_p",
+          "type": "int"
+        },
+        {
+          "name": "factors",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "name": "start",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "fallback",
+          "op": "const",
+          "type": "int",
+          "value": -999
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "start"
+          ],
+          "dest": "guess",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "label": "eval"
+        },
+        {
+          "args": [
+            "guess",
+            "p"
+          ],
+          "dest": "too_big",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "too_big"
+          ],
+          "funcs": [],
+          "labels": [
+            "done_guess",
+            "keep_trying"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "keep_trying"
+        },
+        {
+          "args": [
+            "p",
+            "phi_p",
+            "factors",
+            "guess"
+          ],
+          "dest": "works",
+          "funcs": [
+            "check_ord"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "works"
+          ],
+          "funcs": [],
+          "labels": [
+            "ret",
+            "inc"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "ret"
+        },
+        {
+          "args": [
+            "guess"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "inc"
+        },
+        {
+          "args": [
+            "guess",
+            "one"
+          ],
+          "dest": "guess",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "eval"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done_guess"
+        },
+        {
+          "args": [
+            "fallback"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "search_primitive",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "p",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "p",
+            "one"
+          ],
+          "dest": "q",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "q"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "phi",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "p",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "p"
+          ],
+          "dest": "phi_p",
+          "funcs": [
+            "phi"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "dest": "count_result",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "phi_p",
+            "count_result"
+          ],
+          "dest": "prime_factors",
+          "funcs": [
+            "prime_factors"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "int"
+          }
+        },
+        {
+          "args": [
+            "count_result"
+          ],
+          "dest": "num_factors",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "int"
+        },
+        {
+          "args": [
+            "p",
+            "phi_p",
+            "prime_factors",
+            "one"
+          ],
+          "dest": "res",
+          "funcs": [
+            "search_primitive"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "count_result"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "prime_factors"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

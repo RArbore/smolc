@@ -1,0 +1,450 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "v0",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v0"
+          ],
+          "dest": "e",
+          "funcs": [
+            "taylor_series_euler"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "e"
+          ],
+          "dest": "e",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "e"
+          ],
+          "dest": "v1",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v1"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "dest": "v2",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "v1",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "dest": "v2",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "v1",
+            "v2"
+          ],
+          "dest": "v3",
+          "funcs": [],
+          "labels": [],
+          "op": "fle",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "v3"
+          ],
+          "funcs": [],
+          "labels": [
+            "then.0",
+            "else.0"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "then.0"
+        },
+        {
+          "dest": "v4",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "v4"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endif.0"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "else.0"
+        },
+        {
+          "label": "endif.0"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "v5",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "dest": "v6",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "v5",
+            "v6"
+          ],
+          "dest": "v7",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v7"
+          ],
+          "dest": "v8",
+          "funcs": [
+            "factorial"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "v9",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v8",
+            "v9"
+          ],
+          "dest": "v10",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v10"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "factorial",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "v0",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "args": [
+            "v0"
+          ],
+          "dest": "e",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "dest": "v2",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "args": [
+            "v2"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "label": "for.cond.1"
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v3",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "v4",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v3",
+            "v4"
+          ],
+          "dest": "v5",
+          "funcs": [],
+          "labels": [],
+          "op": "flt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "v5"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body.1",
+            "for.end.1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body.1"
+        },
+        {
+          "dest": "v6",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v7",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v7"
+          ],
+          "dest": "v8",
+          "funcs": [
+            "factorial"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v6",
+            "v8"
+          ],
+          "dest": "v9",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "e"
+          ],
+          "dest": "v10",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v9",
+            "v10"
+          ],
+          "dest": "v11",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v11"
+          ],
+          "dest": "e",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "v12",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "dest": "v13",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "v12",
+            "v13"
+          ],
+          "dest": "v14",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v14"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond.1"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end.1"
+        },
+        {
+          "args": [
+            "e"
+          ],
+          "dest": "v15",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v15"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "taylor_series_euler",
+      "type": "float"
+    }
+  ],
+  "imports": []
+}

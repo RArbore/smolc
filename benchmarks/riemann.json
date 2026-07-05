@@ -1,0 +1,731 @@
+{
+  "functions": [
+    {
+      "args": [],
+      "instrs": [
+        {
+          "dest": "a",
+          "op": "const",
+          "type": "float",
+          "value": 2.0
+        },
+        {
+          "dest": "b",
+          "op": "const",
+          "type": "float",
+          "value": 10.0
+        },
+        {
+          "dest": "n",
+          "op": "const",
+          "type": "float",
+          "value": 8.0
+        },
+        {
+          "args": [
+            "a",
+            "b",
+            "n"
+          ],
+          "dest": "left",
+          "funcs": [
+            "left_riemann"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "left"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "a",
+            "b",
+            "n"
+          ],
+          "dest": "midpoint",
+          "funcs": [
+            "midpoint_riemann"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "midpoint"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "a",
+            "b",
+            "n"
+          ],
+          "dest": "right",
+          "funcs": [
+            "right_riemann"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "right"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "x",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "x",
+            "x"
+          ],
+          "dest": "square",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "square"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "square_function",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "float"
+        },
+        {
+          "name": "b",
+          "type": "float"
+        },
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "float",
+          "value": 0.0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "float",
+          "value": 1.0
+        },
+        {
+          "args": [
+            "zero",
+            "one"
+          ],
+          "dest": "negative_one",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "b",
+            "a"
+          ],
+          "dest": "diff",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "diff",
+            "n"
+          ],
+          "dest": "delta",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "n",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "dest": "sum",
+          "op": "const",
+          "type": "float",
+          "value": 0.0
+        },
+        {
+          "label": "while.header"
+        },
+        {
+          "args": [
+            "i",
+            "negative_one"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "feq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "while.end",
+            "while.body"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "while.body"
+        },
+        {
+          "args": [
+            "delta",
+            "i"
+          ],
+          "dest": "offset",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "a",
+            "offset"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "x"
+          ],
+          "dest": "f_x",
+          "funcs": [
+            "square_function"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum",
+            "f_x"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "while.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "while.end"
+        },
+        {
+          "args": [
+            "sum",
+            "delta"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "left_riemann",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "float"
+        },
+        {
+          "name": "b",
+          "type": "float"
+        },
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "float",
+          "value": 0.0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "float",
+          "value": 1.0
+        },
+        {
+          "args": [
+            "b",
+            "a"
+          ],
+          "dest": "diff",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "diff",
+            "n"
+          ],
+          "dest": "delta",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "dest": "sum",
+          "op": "const",
+          "type": "float",
+          "value": 0.0
+        },
+        {
+          "label": "while.header"
+        },
+        {
+          "args": [
+            "i",
+            "zero"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "feq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "while.end",
+            "while.body"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "while.body"
+        },
+        {
+          "args": [
+            "delta",
+            "i"
+          ],
+          "dest": "offset",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "a",
+            "offset"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "x"
+          ],
+          "dest": "f_x",
+          "funcs": [
+            "square_function"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum",
+            "f_x"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "while.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "while.end"
+        },
+        {
+          "args": [
+            "sum",
+            "delta"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "right_riemann",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "float"
+        },
+        {
+          "name": "b",
+          "type": "float"
+        },
+        {
+          "name": "n",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "float",
+          "value": 0.0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "float",
+          "value": 1.0
+        },
+        {
+          "args": [
+            "zero",
+            "one"
+          ],
+          "dest": "negative_one",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "float",
+          "value": 2.0
+        },
+        {
+          "args": [
+            "b",
+            "a"
+          ],
+          "dest": "diff",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "diff",
+            "n"
+          ],
+          "dest": "delta",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "n",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "dest": "sum",
+          "op": "const",
+          "type": "float",
+          "value": 0.0
+        },
+        {
+          "label": "while.header"
+        },
+        {
+          "args": [
+            "i",
+            "negative_one"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "feq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "while.end",
+            "while.body"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "while.body"
+        },
+        {
+          "args": [
+            "delta",
+            "i"
+          ],
+          "dest": "offset",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "delta",
+            "two"
+          ],
+          "dest": "half_delta",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "offset",
+            "half_delta"
+          ],
+          "dest": "offset",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "a",
+            "offset"
+          ],
+          "dest": "x",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "x"
+          ],
+          "dest": "f_x",
+          "funcs": [
+            "square_function"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum",
+            "f_x"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "while.header"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "while.end"
+        },
+        {
+          "args": [
+            "sum",
+            "delta"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "midpoint_riemann",
+      "type": "float"
+    }
+  ],
+  "imports": []
+}

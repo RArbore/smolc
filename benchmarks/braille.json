@@ -1,0 +1,1397 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "dest": "five",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "dest": "six",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "dest": "seven",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "dest": "eight",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "eleven",
+          "op": "const",
+          "type": "int",
+          "value": 11
+        },
+        {
+          "args": [
+            "input",
+            "nine"
+          ],
+          "dest": "isnine",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "isnine"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_nine",
+            "else0"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_nine"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else0"
+        },
+        {
+          "args": [
+            "input",
+            "zero"
+          ],
+          "dest": "iszero",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "iszero"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_zero",
+            "else1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_zero"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else1"
+        },
+        {
+          "args": [
+            "input",
+            "five"
+          ],
+          "dest": "isfive",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "isfive"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_five",
+            "else2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_five"
+        },
+        {
+          "args": [
+            "ten"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else2"
+        },
+        {
+          "args": [
+            "input",
+            "eight"
+          ],
+          "dest": "iseight",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "iseight"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_eight",
+            "else3"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_eight"
+        },
+        {
+          "args": [
+            "ten"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else3"
+        },
+        {
+          "args": [
+            "input",
+            "three"
+          ],
+          "dest": "gethree",
+          "funcs": [],
+          "labels": [],
+          "op": "ge",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "gethree"
+          ],
+          "funcs": [],
+          "labels": [
+            "ge_three",
+            "else4"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "ge_three"
+        },
+        {
+          "args": [
+            "eleven"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else4"
+        },
+        {
+          "args": [
+            "ten"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "firstrow",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "dest": "five",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "dest": "six",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "dest": "seven",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "dest": "eight",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "eleven",
+          "op": "const",
+          "type": "int",
+          "value": 11
+        },
+        {
+          "args": [
+            "input",
+            "two"
+          ],
+          "dest": "istwo",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "istwo"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_two",
+            "else0"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_two"
+        },
+        {
+          "args": [
+            "ten"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else0"
+        },
+        {
+          "args": [
+            "input",
+            "zero"
+          ],
+          "dest": "iszero",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "iszero"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_zero",
+            "else000"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_zero"
+        },
+        {
+          "args": [
+            "eleven"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else000"
+        },
+        {
+          "args": [
+            "input",
+            "three"
+          ],
+          "dest": "lethree",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lethree"
+          ],
+          "funcs": [],
+          "labels": [
+            "le_three",
+            "else1"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "le_three"
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else1"
+        },
+        {
+          "args": [
+            "input",
+            "five"
+          ],
+          "dest": "lefive",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "lefive"
+          ],
+          "funcs": [],
+          "labels": [
+            "le_five",
+            "else2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "le_five"
+        },
+        {
+          "args": [
+            "one"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else2"
+        },
+        {
+          "args": [
+            "input",
+            "six"
+          ],
+          "dest": "issix",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "issix"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_six",
+            "else3"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_six"
+        },
+        {
+          "args": [
+            "ten"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else3"
+        },
+        {
+          "args": [
+            "input",
+            "nine"
+          ],
+          "dest": "isnine",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "isnine"
+          ],
+          "funcs": [],
+          "labels": [
+            "is_nine",
+            "else4"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "is_nine"
+        },
+        {
+          "args": [
+            "ten"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "else4"
+        },
+        {
+          "args": [
+            "eleven"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "secondrow",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "thirdrow",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "dest": "five",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "dest": "six",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "dest": "seven",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "dest": "eight",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "hundred",
+          "op": "const",
+          "type": "int",
+          "value": 100
+        },
+        {
+          "dest": "retval",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "args": [
+            "input",
+            "ten"
+          ],
+          "dest": "base",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "base"
+          ],
+          "funcs": [],
+          "labels": [
+            "base",
+            "else"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "else"
+        },
+        {
+          "args": [
+            "input",
+            "ten"
+          ],
+          "dest": "upper",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "upper",
+            "ten"
+          ],
+          "dest": "upper_",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "input",
+            "upper_"
+          ],
+          "dest": "lastdigit",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "lastdigit"
+          ],
+          "dest": "printable_lastdigit",
+          "funcs": [
+            "firstrow"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "upper"
+          ],
+          "dest": "_prefix",
+          "funcs": [
+            "printable_first_row"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "_prefix",
+            "hundred"
+          ],
+          "dest": "prefix",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "prefix",
+            "printable_lastdigit"
+          ],
+          "dest": "retval",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "retval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "base"
+        },
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "printable",
+          "funcs": [
+            "firstrow"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "dest": "hdr",
+          "op": "const",
+          "type": "int",
+          "value": 70100
+        },
+        {
+          "args": [
+            "hdr",
+            "printable"
+          ],
+          "dest": "retval",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "retval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "printable_first_row",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "dest": "five",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "dest": "six",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "dest": "seven",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "dest": "eight",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "hundred",
+          "op": "const",
+          "type": "int",
+          "value": 100
+        },
+        {
+          "args": [
+            "input",
+            "ten"
+          ],
+          "dest": "base",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "base"
+          ],
+          "funcs": [],
+          "labels": [
+            "base",
+            "else"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "else"
+        },
+        {
+          "args": [
+            "input",
+            "ten"
+          ],
+          "dest": "upper",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "upper",
+            "ten"
+          ],
+          "dest": "upper_",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "input",
+            "upper_"
+          ],
+          "dest": "lastdigit",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "lastdigit"
+          ],
+          "dest": "printable_lastdigit",
+          "funcs": [
+            "secondrow"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "upper"
+          ],
+          "dest": "_prefix",
+          "funcs": [
+            "printable_second_row"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "_prefix",
+            "hundred"
+          ],
+          "dest": "prefix",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "prefix",
+            "printable_lastdigit"
+          ],
+          "dest": "retval",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "retval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "base"
+        },
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "printable",
+          "funcs": [
+            "secondrow"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "dest": "hdr",
+          "op": "const",
+          "type": "int",
+          "value": 70100
+        },
+        {
+          "args": [
+            "hdr",
+            "printable"
+          ],
+          "dest": "retval",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "retval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "printable_second_row",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "int",
+          "value": 4
+        },
+        {
+          "dest": "five",
+          "op": "const",
+          "type": "int",
+          "value": 5
+        },
+        {
+          "dest": "six",
+          "op": "const",
+          "type": "int",
+          "value": 6
+        },
+        {
+          "dest": "seven",
+          "op": "const",
+          "type": "int",
+          "value": 7
+        },
+        {
+          "dest": "eight",
+          "op": "const",
+          "type": "int",
+          "value": 8
+        },
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "dest": "ten",
+          "op": "const",
+          "type": "int",
+          "value": 10
+        },
+        {
+          "dest": "hundred",
+          "op": "const",
+          "type": "int",
+          "value": 100
+        },
+        {
+          "args": [
+            "input",
+            "ten"
+          ],
+          "dest": "base",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "base"
+          ],
+          "funcs": [],
+          "labels": [
+            "base",
+            "else"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "else"
+        },
+        {
+          "args": [
+            "input",
+            "ten"
+          ],
+          "dest": "upper",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "upper",
+            "ten"
+          ],
+          "dest": "upper_",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "input",
+            "upper_"
+          ],
+          "dest": "lastdigit",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "lastdigit"
+          ],
+          "dest": "printable_lastdigit",
+          "funcs": [
+            "thirdrow"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "upper"
+          ],
+          "dest": "_prefix",
+          "funcs": [
+            "printable_third_row"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "_prefix",
+            "hundred"
+          ],
+          "dest": "prefix",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "prefix",
+            "printable_lastdigit"
+          ],
+          "dest": "retval",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "retval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        },
+        {
+          "label": "base"
+        },
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "printable",
+          "funcs": [
+            "thirdrow"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "dest": "hdr",
+          "op": "const",
+          "type": "int",
+          "value": 71100
+        },
+        {
+          "args": [
+            "hdr",
+            "printable"
+          ],
+          "dest": "retval",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "retval"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "printable_third_row",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "printable",
+          "funcs": [
+            "printable_first_row"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "printable"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "printable",
+          "funcs": [
+            "printable_second_row"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "printable"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "input"
+          ],
+          "dest": "printable",
+          "funcs": [
+            "printable_third_row"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "printable"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

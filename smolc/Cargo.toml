@@ -12,5 +12,6 @@ name = "smolc"
 path = "src/main.rs"
 
 [dependencies]
+bril-rs = { git = "https://github.com/sampsyo/bril.git", rev = "e8b05b703acc9601addd6053294a3040863194cc", features = ["float", "memory", "ssa", "char", "bitcast"] }
 clap = { version = "4.6.1", features = ["derive"] }
 egg = "0.11.0"

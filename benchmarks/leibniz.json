@@ -1,0 +1,228 @@
+{
+  "functions": [
+    {
+      "args": [],
+      "instrs": [
+        {
+          "dest": "pi",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "dest": "denom",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "dest": "is_even",
+          "op": "const",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "end",
+          "op": "const",
+          "type": "int",
+          "value": 1000000
+        },
+        {
+          "label": "for.start"
+        },
+        {
+          "args": [
+            "i",
+            "end"
+          ],
+          "dest": "b",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "b"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "dest": "fone",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "is_even"
+          ],
+          "funcs": [],
+          "labels": [
+            "if.true",
+            "if.false"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "if.true"
+        },
+        {
+          "args": [
+            "fone",
+            "denom"
+          ],
+          "dest": "f1",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "pi",
+            "f1"
+          ],
+          "dest": "pi",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "if.end"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "if.false"
+        },
+        {
+          "args": [
+            "fone",
+            "denom"
+          ],
+          "dest": "f2",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "pi",
+            "f2"
+          ],
+          "dest": "pi",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "label": "if.end"
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "args": [
+            "denom",
+            "two"
+          ],
+          "dest": "denom",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "is_even"
+          ],
+          "dest": "is_even",
+          "funcs": [],
+          "labels": [],
+          "op": "not",
+          "type": "bool"
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.start"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "float",
+          "value": 4
+        },
+        {
+          "args": [
+            "pi",
+            "four"
+          ],
+          "dest": "pi",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "pi"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

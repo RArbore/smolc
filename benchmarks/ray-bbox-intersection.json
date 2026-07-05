@@ -1,0 +1,752 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "x_min",
+          "type": "float"
+        },
+        {
+          "name": "y_min",
+          "type": "float"
+        },
+        {
+          "name": "x_max",
+          "type": "float"
+        },
+        {
+          "name": "y_max",
+          "type": "float"
+        },
+        {
+          "name": "x_ray_origin",
+          "type": "float"
+        },
+        {
+          "name": "y_ray_origin",
+          "type": "float"
+        },
+        {
+          "name": "x_ray_direction",
+          "type": "float"
+        },
+        {
+          "name": "y_ray_direction",
+          "type": "float"
+        },
+        {
+          "name": "t",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "x_min",
+            "y_min",
+            "x_max",
+            "y_max",
+            "x_ray_origin",
+            "y_ray_origin",
+            "x_ray_direction",
+            "y_ray_direction",
+            "t"
+          ],
+          "funcs": [
+            "ray_bbox_inter"
+          ],
+          "labels": [],
+          "op": "call"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "x_min",
+          "type": "float"
+        },
+        {
+          "name": "y_min",
+          "type": "float"
+        },
+        {
+          "name": "x_max",
+          "type": "float"
+        },
+        {
+          "name": "y_max",
+          "type": "float"
+        },
+        {
+          "name": "x_ray_origin",
+          "type": "float"
+        },
+        {
+          "name": "y_ray_origin",
+          "type": "float"
+        },
+        {
+          "name": "x_ray_direction",
+          "type": "float"
+        },
+        {
+          "name": "y_ray_direction",
+          "type": "float"
+        },
+        {
+          "name": "t",
+          "type": "float"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "t_min",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "args": [
+            "t"
+          ],
+          "dest": "t_max",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "x_min",
+            "x_ray_origin"
+          ],
+          "dest": "t_x_min_num",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "x_max",
+            "x_ray_origin"
+          ],
+          "dest": "t_x_max_num",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "t_x_min_num",
+            "x_ray_direction"
+          ],
+          "dest": "t_x_min",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "t_x_max_num",
+            "x_ray_direction"
+          ],
+          "dest": "t_x_max",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "t_x_min",
+            "t_x_max"
+          ],
+          "dest": "cond1",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond1"
+          ],
+          "funcs": [],
+          "labels": [
+            "case1",
+            "case2"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case1"
+        },
+        {
+          "args": [
+            "t_x_max",
+            "t_min"
+          ],
+          "dest": "cond11",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond11"
+          ],
+          "funcs": [],
+          "labels": [
+            "case11",
+            "donothing11"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case11"
+        },
+        {
+          "args": [
+            "t_x_max"
+          ],
+          "dest": "t_min",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase11"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing11"
+        },
+        {
+          "label": "endcase11"
+        },
+        {
+          "args": [
+            "t_x_min",
+            "t_max"
+          ],
+          "dest": "cond12",
+          "funcs": [],
+          "labels": [],
+          "op": "flt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond12"
+          ],
+          "funcs": [],
+          "labels": [
+            "case12",
+            "donothing12"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case12"
+        },
+        {
+          "args": [
+            "t_x_min"
+          ],
+          "dest": "t_max",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase12"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing12"
+        },
+        {
+          "label": "endcase12"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endpart1"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "case2"
+        },
+        {
+          "args": [
+            "t_x_min",
+            "t_min"
+          ],
+          "dest": "cond21",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond21"
+          ],
+          "funcs": [],
+          "labels": [
+            "case21",
+            "donothing21"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case21"
+        },
+        {
+          "args": [
+            "t_x_min"
+          ],
+          "dest": "t_min",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase21"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing21"
+        },
+        {
+          "label": "endcase21"
+        },
+        {
+          "args": [
+            "t_x_max",
+            "t_max"
+          ],
+          "dest": "cond22",
+          "funcs": [],
+          "labels": [],
+          "op": "flt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond22"
+          ],
+          "funcs": [],
+          "labels": [
+            "case22",
+            "donothing22"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case22"
+        },
+        {
+          "args": [
+            "t_x_max"
+          ],
+          "dest": "t_max",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase22"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing22"
+        },
+        {
+          "label": "endcase22"
+        },
+        {
+          "label": "endpart1"
+        },
+        {
+          "args": [
+            "y_min",
+            "y_ray_origin"
+          ],
+          "dest": "t_y_min_num",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "y_max",
+            "y_ray_origin"
+          ],
+          "dest": "t_y_max_num",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "t_y_min_num",
+            "y_ray_direction"
+          ],
+          "dest": "t_y_min",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "t_y_max_num",
+            "y_ray_direction"
+          ],
+          "dest": "t_y_max",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "t_y_min",
+            "t_y_max"
+          ],
+          "dest": "cond3",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond3"
+          ],
+          "funcs": [],
+          "labels": [
+            "case3",
+            "case4"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case3"
+        },
+        {
+          "args": [
+            "t_y_max",
+            "t_min"
+          ],
+          "dest": "cond31",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond31"
+          ],
+          "funcs": [],
+          "labels": [
+            "case31",
+            "donothing31"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case31"
+        },
+        {
+          "args": [
+            "t_y_max"
+          ],
+          "dest": "t_min",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase31"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing31"
+        },
+        {
+          "label": "endcase31"
+        },
+        {
+          "args": [
+            "t_y_min",
+            "t_max"
+          ],
+          "dest": "cond32",
+          "funcs": [],
+          "labels": [],
+          "op": "flt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond32"
+          ],
+          "funcs": [],
+          "labels": [
+            "case32",
+            "donothing32"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case32"
+        },
+        {
+          "args": [
+            "t_y_min"
+          ],
+          "dest": "t_max",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase32"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing32"
+        },
+        {
+          "label": "endcase32"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endpart2"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "case4"
+        },
+        {
+          "args": [
+            "t_y_min",
+            "t_min"
+          ],
+          "dest": "cond41",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond41"
+          ],
+          "funcs": [],
+          "labels": [
+            "case41",
+            "donothing41"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case41"
+        },
+        {
+          "args": [
+            "t_y_min"
+          ],
+          "dest": "t_min",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase41"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing41"
+        },
+        {
+          "label": "endcase41"
+        },
+        {
+          "args": [
+            "t_y_max",
+            "t_max"
+          ],
+          "dest": "cond42",
+          "funcs": [],
+          "labels": [],
+          "op": "flt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond42"
+          ],
+          "funcs": [],
+          "labels": [
+            "case42",
+            "donothing42"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "case42"
+        },
+        {
+          "args": [
+            "t_y_max"
+          ],
+          "dest": "t_max",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "endcase42"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "donothing42"
+        },
+        {
+          "label": "endcase42"
+        },
+        {
+          "label": "endpart2"
+        },
+        {
+          "args": [
+            "t_min",
+            "t_max"
+          ],
+          "dest": "finalcheck",
+          "funcs": [],
+          "labels": [],
+          "op": "fgt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "finalcheck"
+          ],
+          "funcs": [],
+          "labels": [
+            "printfalse",
+            "printtrue"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "printfalse"
+        },
+        {
+          "dest": "falsebool",
+          "op": "const",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "args": [
+            "falsebool"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "exit"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "printtrue"
+        },
+        {
+          "dest": "truebool",
+          "op": "const",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "args": [
+            "truebool"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "label": "exit"
+        }
+      ],
+      "name": "ray_bbox_inter",
+      "type": null
+    }
+  ],
+  "imports": []
+}

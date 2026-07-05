@@ -1,0 +1,1283 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "matrix",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "r",
+          "type": "int"
+        },
+        {
+          "name": "c",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "args": [
+            "three",
+            "r"
+          ],
+          "dest": "trip_r",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "c",
+            "trip_r"
+          ],
+          "dest": "index",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "matrix",
+            "index"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr"
+          ],
+          "dest": "res",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "res"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "matget",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "a",
+          "type": "int"
+        },
+        {
+          "name": "b",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "a",
+            "b"
+          ],
+          "dest": "acc",
+          "funcs": [],
+          "labels": [],
+          "op": "div",
+          "type": "int"
+        },
+        {
+          "args": [
+            "b",
+            "acc"
+          ],
+          "dest": "acc",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "acc"
+          ],
+          "dest": "acc",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "args": [
+            "acc"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "mod",
+      "type": "int"
+    },
+    {
+      "args": [
+        {
+          "name": "matrix",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "det",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "matrix",
+            "zero",
+            "i"
+          ],
+          "dest": "to_add",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "to_add"
+          ],
+          "dest": "to_sub",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "col",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "col",
+            "three"
+          ],
+          "dest": "col",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "matrix",
+            "one",
+            "col"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "to_add",
+            "tmp"
+          ],
+          "dest": "to_add",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "matrix",
+            "two",
+            "col"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "to_sub",
+            "tmp"
+          ],
+          "dest": "to_sub",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "two"
+          ],
+          "dest": "col",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "col",
+            "three"
+          ],
+          "dest": "col",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "matrix",
+            "two",
+            "col"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "to_add",
+            "tmp"
+          ],
+          "dest": "to_add",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "matrix",
+            "one",
+            "col"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "to_sub",
+            "tmp"
+          ],
+          "dest": "to_sub",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "det",
+            "to_add"
+          ],
+          "dest": "det",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "det",
+            "to_sub"
+          ],
+          "dest": "det",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "three"
+          ],
+          "dest": "i_lt_three",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "i_lt_three"
+          ],
+          "funcs": [],
+          "labels": [
+            "loop",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [
+            "det"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "determinant",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "matrix",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "matrix"
+          ],
+          "dest": "det",
+          "funcs": [
+            "determinant"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "args": [
+            "nine"
+          ],
+          "dest": "result",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "two",
+          "op": "const",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "int",
+          "value": 3
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "label": "outer"
+        },
+        {
+          "args": [
+            "zero"
+          ],
+          "dest": "j",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "label": "inner"
+        },
+        {
+          "args": [
+            "j",
+            "one"
+          ],
+          "dest": "jp1",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "jp1",
+            "three"
+          ],
+          "dest": "jp1",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "j",
+            "two"
+          ],
+          "dest": "jp2",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "jp2",
+            "three"
+          ],
+          "dest": "jp2",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "ip1",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ip1",
+            "three"
+          ],
+          "dest": "ip1",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "two"
+          ],
+          "dest": "ip2",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "ip2",
+            "three"
+          ],
+          "dest": "ip2",
+          "funcs": [
+            "mod"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "int"
+        },
+        {
+          "args": [
+            "matrix",
+            "jp1",
+            "ip1"
+          ],
+          "dest": "val",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "matrix",
+            "jp2",
+            "ip2"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "val",
+            "tmp"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "matrix",
+            "jp1",
+            "ip2"
+          ],
+          "dest": "tmp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "matrix",
+            "jp2",
+            "ip1"
+          ],
+          "dest": "temp",
+          "funcs": [
+            "matget"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "tmp",
+            "temp"
+          ],
+          "dest": "tmp",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "val",
+            "tmp"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "fsub",
+          "type": "float"
+        },
+        {
+          "args": [
+            "val",
+            "det"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "three",
+            "i"
+          ],
+          "dest": "index",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "index",
+            "j"
+          ],
+          "dest": "index",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "result",
+            "index"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "j",
+            "one"
+          ],
+          "dest": "j",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "j",
+            "three"
+          ],
+          "dest": "j_lt_three",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "j_lt_three"
+          ],
+          "funcs": [],
+          "labels": [
+            "inner",
+            "continue"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "continue"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i",
+            "three"
+          ],
+          "dest": "i_lt_three",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "i_lt_three"
+          ],
+          "funcs": [],
+          "labels": [
+            "outer",
+            "finished"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "finished"
+        },
+        {
+          "args": [
+            "result"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "inverse",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [],
+      "instrs": [
+        {
+          "dest": "nine",
+          "op": "const",
+          "type": "int",
+          "value": 9
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "args": [
+            "nine"
+          ],
+          "dest": "matrix",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "dest": "onef",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "dest": "three",
+          "op": "const",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "dest": "four",
+          "op": "const",
+          "type": "float",
+          "value": 4
+        },
+        {
+          "dest": "five",
+          "op": "const",
+          "type": "float",
+          "value": 5
+        },
+        {
+          "dest": "seven",
+          "op": "const",
+          "type": "float",
+          "value": 7
+        },
+        {
+          "args": [
+            "matrix",
+            "zero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "matrix",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "onef"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "seven"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "four"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "three"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "five"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "seven"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "four"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "ptr",
+            "one"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr",
+            "five"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "matrix"
+          ],
+          "dest": "det",
+          "funcs": [
+            "determinant"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "det"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "matrix"
+          ],
+          "dest": "inv",
+          "funcs": [
+            "inverse"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "nine",
+            "inv"
+          ],
+          "funcs": [
+            "printarray"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "inv"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "matrix"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "arr",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "loop"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "body",
+            "done"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "body"
+        },
+        {
+          "args": [
+            "arr",
+            "i"
+          ],
+          "dest": "loc",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "loc"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "label": "loop_end"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "loop"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "done"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "printarray",
+      "type": null
+    }
+  ],
+  "imports": []
+}

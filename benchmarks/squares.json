@@ -1,0 +1,93 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "input",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "zero",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "cur",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "print"
+        },
+        {
+          "args": [
+            "cur",
+            "cur"
+          ],
+          "dest": "square",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "square"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "cur",
+            "input"
+          ],
+          "dest": "isdone",
+          "funcs": [],
+          "labels": [],
+          "op": "eq",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cur",
+            "one"
+          ],
+          "dest": "cur",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "isdone"
+          ],
+          "funcs": [],
+          "labels": [
+            "done",
+            "print"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "done"
+        }
+      ],
+      "name": "main",
+      "type": null
+    }
+  ],
+  "imports": []
+}

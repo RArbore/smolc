@@ -1,0 +1,2173 @@
+{
+  "functions": [
+    {
+      "args": [
+        {
+          "name": "n",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "fone",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "a",
+          "funcs": [
+            "get_sym"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "x0",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "n"
+          ],
+          "dest": "b",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "v",
+          "op": "const",
+          "type": "float",
+          "value": 5
+        },
+        {
+          "label": "for.set.cond"
+        },
+        {
+          "args": [
+            "i",
+            "n"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.set.body",
+            "for.set.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.set.body"
+        },
+        {
+          "args": [
+            "b",
+            "i"
+          ],
+          "dest": "idx_b",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "x0",
+            "i"
+          ],
+          "dest": "idx_x0",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "idx_b",
+            "v"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "idx_x0",
+            "fone"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v",
+            "fone"
+          ],
+          "dest": "v",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.set.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.set.end"
+        },
+        {
+          "args": [
+            "n",
+            "a",
+            "x0",
+            "b"
+          ],
+          "dest": "x_sol",
+          "funcs": [
+            "cg"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "n",
+            "x_sol"
+          ],
+          "funcs": [
+            "disp_vec"
+          ],
+          "labels": [],
+          "op": "call"
+        },
+        {
+          "args": [
+            "x_sol"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "x0"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "b"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        }
+      ],
+      "name": "main",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "c",
+          "type": "float"
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "v_copy",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "for.cond"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "args": [
+            "v",
+            "i"
+          ],
+          "dest": "v_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "v_copy",
+            "i"
+          ],
+          "dest": "v_copy_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "v_ptr"
+          ],
+          "dest": "v_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "c",
+            "v_val"
+          ],
+          "dest": "cv_val",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v_copy_ptr",
+            "cv_val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "args": [
+            "v_copy"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "vec_mul",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "fone",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "size",
+            "fone",
+            "v"
+          ],
+          "dest": "v_copy",
+          "funcs": [
+            "vec_mul"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "v_copy"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "vec_copy",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "u",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "acc",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "label": "for.cond"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "args": [
+            "u",
+            "i"
+          ],
+          "dest": "u_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "v",
+            "i"
+          ],
+          "dest": "v_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "u_ptr"
+          ],
+          "dest": "u_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v_ptr"
+          ],
+          "dest": "v_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "u_val",
+            "v_val"
+          ],
+          "dest": "uv",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "uv",
+            "acc"
+          ],
+          "dest": "acc",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "args": [
+            "acc"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "dot_p",
+      "type": "float"
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "u",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "fnegone",
+          "op": "const",
+          "type": "float",
+          "value": -1
+        },
+        {
+          "args": [
+            "size",
+            "fnegone",
+            "v"
+          ],
+          "dest": "minus_v",
+          "funcs": [
+            "vec_mul"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "u",
+            "minus_v"
+          ],
+          "dest": "diff",
+          "funcs": [
+            "vec_add"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "minus_v"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "diff"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "vec_sub",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "u",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "sum",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "for.cond"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "args": [
+            "u",
+            "i"
+          ],
+          "dest": "u_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "v",
+            "i"
+          ],
+          "dest": "v_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "sum",
+            "i"
+          ],
+          "dest": "sum_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "u_ptr"
+          ],
+          "dest": "u_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "v_ptr"
+          ],
+          "dest": "v_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "u_val",
+            "v_val"
+          ],
+          "dest": "u_add_v",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "sum_ptr",
+            "u_add_v"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "vec_add",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "u",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size",
+            "u",
+            "v"
+          ],
+          "dest": "sum",
+          "funcs": [
+            "vec_add"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "u"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "sum"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "vec_add_inp",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "u",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size",
+            "u",
+            "v"
+          ],
+          "dest": "diff",
+          "funcs": [
+            "vec_sub"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "u"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "diff"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "vec_sub_inp",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "a",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size"
+          ],
+          "dest": "prod",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "row",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "for.row.cond"
+        },
+        {
+          "args": [
+            "row",
+            "size"
+          ],
+          "dest": "cond_row",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_row"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.row.body",
+            "for.row.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.row.body"
+        },
+        {
+          "dest": "col",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "acc",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "label": "for.col.cond"
+        },
+        {
+          "args": [
+            "col",
+            "size"
+          ],
+          "dest": "cond_col",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond_col"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.col.body",
+            "for.col.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.col.body"
+        },
+        {
+          "args": [
+            "size",
+            "row"
+          ],
+          "dest": "a_row_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "col"
+          ],
+          "dest": "a_col_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a_row_idx",
+            "a_col_idx"
+          ],
+          "dest": "a_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "a_idx"
+          ],
+          "dest": "a_val_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "a_val_ptr"
+          ],
+          "dest": "a_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "col"
+          ],
+          "dest": "v_idx",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "v",
+            "v_idx"
+          ],
+          "dest": "v_val_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "v_val_ptr"
+          ],
+          "dest": "v_val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "a_val",
+            "v_val"
+          ],
+          "dest": "p",
+          "funcs": [],
+          "labels": [],
+          "op": "fmul",
+          "type": "float"
+        },
+        {
+          "args": [
+            "p",
+            "acc"
+          ],
+          "dest": "acc",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "col",
+            "one"
+          ],
+          "dest": "col",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.col.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.col.end"
+        },
+        {
+          "args": [
+            "prod",
+            "row"
+          ],
+          "dest": "prod_ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "prod_ptr",
+            "acc"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "row",
+            "one"
+          ],
+          "dest": "row",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.row.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.row.end"
+        },
+        {
+          "args": [
+            "prod"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "mat_vec",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ],
+      "instrs": [
+        {
+          "args": [
+            "size",
+            "size"
+          ],
+          "dest": "nnz",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "nnz"
+          ],
+          "dest": "a",
+          "funcs": [],
+          "labels": [],
+          "op": "alloc",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "dest": "fone",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "dest": "fzero",
+          "op": "const",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "label": "for.zero.cond"
+        },
+        {
+          "args": [
+            "i",
+            "nnz"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.zero.body",
+            "for.zero.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.zero.body"
+        },
+        {
+          "args": [
+            "a",
+            "i"
+          ],
+          "dest": "idx",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "idx",
+            "fzero"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.zero.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.zero.end"
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "val",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "size",
+            "one"
+          ],
+          "dest": "loop_end",
+          "funcs": [],
+          "labels": [],
+          "op": "sub",
+          "type": "int"
+        },
+        {
+          "label": "for.cond"
+        },
+        {
+          "args": [
+            "i",
+            "loop_end"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "le",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "row_offset",
+          "funcs": [],
+          "labels": [],
+          "op": "mul",
+          "type": "int"
+        },
+        {
+          "args": [
+            "i"
+          ],
+          "dest": "col_offset",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "int"
+        },
+        {
+          "args": [
+            "row_offset",
+            "col_offset"
+          ],
+          "dest": "offset",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [
+            "a",
+            "offset"
+          ],
+          "dest": "idx",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "idx",
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "store"
+        },
+        {
+          "args": [
+            "val",
+            "fone"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "fadd",
+          "type": "float"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "args": [
+            "a"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "get_sym",
+      "type": {
+        "ptr": "float"
+      }
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "v",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "for.cond"
+        },
+        {
+          "args": [
+            "i",
+            "size"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "args": [
+            "v",
+            "i"
+          ],
+          "dest": "ptr",
+          "funcs": [],
+          "labels": [],
+          "op": "ptradd",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "ptr"
+          ],
+          "dest": "val",
+          "funcs": [],
+          "labels": [],
+          "op": "load",
+          "type": "float"
+        },
+        {
+          "args": [
+            "val"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "print"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "disp_vec",
+      "type": null
+    },
+    {
+      "args": [
+        {
+          "name": "size",
+          "type": "int"
+        },
+        {
+          "name": "a",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "x0",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "name": "b",
+          "type": {
+            "ptr": "float"
+          }
+        }
+      ],
+      "instrs": [
+        {
+          "dest": "max_iter",
+          "op": "const",
+          "type": "int",
+          "value": 1000
+        },
+        {
+          "dest": "inv_tol",
+          "op": "const",
+          "type": "float",
+          "value": 100
+        },
+        {
+          "dest": "fone",
+          "op": "const",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "args": [
+            "fone",
+            "inv_tol"
+          ],
+          "dest": "tol",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "size",
+            "x0"
+          ],
+          "dest": "x",
+          "funcs": [
+            "vec_copy"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "a",
+            "x"
+          ],
+          "dest": "a_dot_x",
+          "funcs": [
+            "mat_vec"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "b",
+            "a_dot_x"
+          ],
+          "dest": "r",
+          "funcs": [
+            "vec_sub"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "r"
+          ],
+          "dest": "p",
+          "funcs": [
+            "vec_copy"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "r",
+            "r"
+          ],
+          "dest": "rs_old",
+          "funcs": [
+            "dot_p"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "dest": "i",
+          "op": "const",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "dest": "one",
+          "op": "const",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "label": "for.cond"
+        },
+        {
+          "args": [
+            "i",
+            "max_iter"
+          ],
+          "dest": "cond",
+          "funcs": [],
+          "labels": [],
+          "op": "lt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.body",
+            "for.end"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "for.body"
+        },
+        {
+          "args": [
+            "size",
+            "a",
+            "p"
+          ],
+          "dest": "a_p",
+          "funcs": [
+            "mat_vec"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "p",
+            "a_p"
+          ],
+          "dest": "p_ap",
+          "funcs": [
+            "dot_p"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "rs_old",
+            "p_ap"
+          ],
+          "dest": "alpha",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "size",
+            "alpha",
+            "p"
+          ],
+          "dest": "alpha_p",
+          "funcs": [
+            "vec_mul"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "alpha",
+            "a_p"
+          ],
+          "dest": "alpha_ap",
+          "funcs": [
+            "vec_mul"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "x",
+            "alpha_p"
+          ],
+          "dest": "x",
+          "funcs": [
+            "vec_add_inp"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "size",
+            "r",
+            "alpha_ap"
+          ],
+          "dest": "r",
+          "funcs": [
+            "vec_sub_inp"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "a_p"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "alpha_p"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "alpha_ap"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "size",
+            "r",
+            "r"
+          ],
+          "dest": "rs_new",
+          "funcs": [
+            "dot_p"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": "float"
+        },
+        {
+          "args": [
+            "rs_new",
+            "tol"
+          ],
+          "dest": "tol_cond",
+          "funcs": [],
+          "labels": [],
+          "op": "flt",
+          "type": "bool"
+        },
+        {
+          "args": [
+            "tol_cond"
+          ],
+          "funcs": [],
+          "labels": [
+            "for.end",
+            "cont"
+          ],
+          "op": "br"
+        },
+        {
+          "label": "cont"
+        },
+        {
+          "args": [
+            "rs_new",
+            "rs_old"
+          ],
+          "dest": "r_new_old",
+          "funcs": [],
+          "labels": [],
+          "op": "fdiv",
+          "type": "float"
+        },
+        {
+          "args": [
+            "size",
+            "r_new_old",
+            "p"
+          ],
+          "dest": "r_p",
+          "funcs": [
+            "vec_mul"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "p"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "size",
+            "r",
+            "r_p"
+          ],
+          "dest": "p",
+          "funcs": [
+            "vec_add"
+          ],
+          "labels": [],
+          "op": "call",
+          "type": {
+            "ptr": "float"
+          }
+        },
+        {
+          "args": [
+            "rs_new"
+          ],
+          "dest": "rs_old",
+          "funcs": [],
+          "labels": [],
+          "op": "id",
+          "type": "float"
+        },
+        {
+          "args": [
+            "r_p"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "i",
+            "one"
+          ],
+          "dest": "i",
+          "funcs": [],
+          "labels": [],
+          "op": "add",
+          "type": "int"
+        },
+        {
+          "args": [],
+          "funcs": [],
+          "labels": [
+            "for.cond"
+          ],
+          "op": "jmp"
+        },
+        {
+          "label": "for.end"
+        },
+        {
+          "args": [
+            "a_dot_x"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "r"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "p"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "free"
+        },
+        {
+          "args": [
+            "x"
+          ],
+          "funcs": [],
+          "labels": [],
+          "op": "ret"
+        }
+      ],
+      "name": "cg",
+      "type": {
+        "ptr": "float"
+      }
+    }
+  ],
+  "imports": []
+}
